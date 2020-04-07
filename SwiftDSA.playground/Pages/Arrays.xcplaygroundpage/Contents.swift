@@ -170,3 +170,16 @@ func moveZeros(nums: inout [Int]) {
 
 var zeroArr = [0,1,0,3,12]
 moveZeros(nums: &zeroArr)
+
+
+func maxProfit(arr: [Int]) -> Int {
+    var maxProfit = 0
+    
+    for index in 1..<arr.count {
+        let temp = arr[index - 1]
+        if temp > arr[index] {
+            maxProfit += arr[index] - temp
+        }
+    }
+    return maxProfit
+}

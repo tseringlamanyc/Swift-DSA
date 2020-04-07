@@ -80,6 +80,8 @@ func patternMatch(sentence: String, pattern: String) -> Bool {
     return true
 }
 
+patternMatch(sentence: "apple banana apple", pattern: "eye")
+
    func reverseString2 (str: inout [Character]) {
         var left = 0
         var right = str.count - 1
@@ -98,18 +100,6 @@ func patternMatch(sentence: String, pattern: String) -> Bool {
 
         }
     }
-
-//var input: [Character] = ["h", "e", "l", "l", "o"]
-//
-//func reverseRecursive(str: inout [Character]) {
-//    guard !str.isEmpty else {return}
-//
-//    let lastWord = str.popLast() ?? "x"
-//
-//    print(str.append(lastWord), reverseRecursive(str: &str))
-//}
-//
-//reverseRecursive(str: &input)
 
 func sequenceCounting(str: String) -> String {
     
@@ -151,3 +141,26 @@ func sequenceCounting(str: String) -> String {
 }
 
 print(sequenceCounting(str: "abccdacc"))
+
+
+func groupingAnagrams(arr: [String]) -> [[String]] {
+    var answer = [[String]]()
+    var anaDict = [String: [String]]()
+    
+    for words in arr {
+        let sortedString = String(words.sorted())
+        if anaDict[sortedString] == nil {
+            anaDict[sortedString] = [words]
+        } else {
+            anaDict[sortedString]?.append(words)
+        }
+    }
+    
+    for (key,value) in anaDict {
+        answer.append(value)
+    }
+    
+    return answer
+}
+
+print(groupingAnagrams(arr: ["eat", "tea", "tan", "ate", "nat", "bat"]))
