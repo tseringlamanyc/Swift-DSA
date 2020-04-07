@@ -154,20 +154,19 @@ func maxSubArray(arr: [Int]) -> Int {
 
 maxSubArray(arr: [-2,1])
 
-func subArraySum(arr: [Int], k: Int) -> Int {
-    var arrDict = [Int: Int]()
-    var result = 0
+func moveZeros(nums: inout [Int]) {
+   
+    var j = 0
     
-    var currentSum = 0
-    
-    for index in 0..<arr.count {
-        currentSum += arr[index]
-        
-        if currentSum == k {
-            result += 1
+    for index in 0..<nums.count {
+        if nums[index] != 0 {
+            let previous = nums[j]
+            nums.swapAt(j, index)
+            nums[index] = previous
+            j += 1
         }
-        
-        
     }
-    return result
 }
+
+var zeroArr = [0,1,0,3,12]
+moveZeros(nums: &zeroArr)
