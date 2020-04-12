@@ -145,10 +145,11 @@ print(sequenceCounting(str: "abccdacc"))
 
 func groupingAnagrams(arr: [String]) -> [[String]] {
     var answer = [[String]]()
-    var anaDict = [String: [String]]()
+    
+    var anaDict = [String: [String]]()  // [aet: [eat, tea, ate]]
     
     for words in arr {
-        let sortedString = String(words.sorted())
+        let sortedString = String(words.sorted())  // aet, ant abt
         if anaDict[sortedString] == nil {
             anaDict[sortedString] = [words]
         } else {
